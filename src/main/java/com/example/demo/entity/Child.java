@@ -22,6 +22,7 @@ public class Child {
 		this.name = name;
 	}
 
-	@DBRef(lazy = true)
+	@DBRef
+//	@DBRef(lazy = true)
 	public List<Address> address;
 }

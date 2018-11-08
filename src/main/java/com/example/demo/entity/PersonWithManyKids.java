@@ -18,8 +18,8 @@ public class PersonWithManyKids {
 	@Id
 	public String id;
 	public String name;
-//	@DBRef
-	@DBRef(lazy = true)
+	@DBRef
+//	@DBRef(lazy = true)
 	public List<Child> kids;
 
 	public PersonWithManyKids(String name) {

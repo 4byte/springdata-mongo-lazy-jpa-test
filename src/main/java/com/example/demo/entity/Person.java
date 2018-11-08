@@ -17,8 +17,8 @@ public class Person {
 	public String id;
 	public String name;
 
-//	@DBRef
-	@DBRef(lazy = true)
+	@DBRef
+//	@DBRef(lazy = true)
 	@Field("child_id")
 	public Child child;
 
