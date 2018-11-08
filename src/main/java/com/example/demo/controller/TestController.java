@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Optional;
+import java.util.*;
 
 @Component
 @Controller
@@ -40,15 +40,21 @@ public class TestController {
 	@RequestMapping(value = "putPerson", method = RequestMethod.GET)
 	@ResponseBody
 	public String putPerson() {
-		Address alabama = new Address("5", "Alabama");
-		Child childKevin = new Child("3","Kevin", alabama);
-		Address florida = new Address("6", "Florida");
-		Child childAmanda = new Child("4","Amanda", florida);
+		Random random = new Random();
+		Address alabama = new Address("5", "Alabama",49387583485L);
+		Address florida = new Address("6", "Florida",238942374823742L);
+		List<Address> addresses = new ArrayList<>();
+		for (int i = 0; i < 100000; i++) {
+			addresses.add(new Address(null, UUID.randomUUID().toString(), random.nextLong()));
+		}
+		Child childKevin = new Child("3","Kevin", addresses);
+		Child childAmanda = new Child("4","Amanda", addresses);
 		Person person = new Person("1", "Alex", childKevin);
 		PersonWithManyKids personWithManyKids = new PersonWithManyKids("1", "Bob", Lists.newArrayList(
 				childKevin,
 				childAmanda
 		));
+		addressRepository.saveAll(addresses);
 		addressRepository.saveAll(Lists.newArrayList(alabama,florida));
 		childRepository.saveAll(Lists.newArrayList(childAmanda,childKevin));
 		personRepository.save(person);

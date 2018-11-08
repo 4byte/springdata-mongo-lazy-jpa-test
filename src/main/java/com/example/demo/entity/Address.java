@@ -14,5 +14,6 @@ public class Address {
 	@Id
 	public String id;
 	public String name;
+	public Long postcode;
 
 }

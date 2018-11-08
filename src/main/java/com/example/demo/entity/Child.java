@@ -7,6 +7,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document
 @Data
 @AllArgsConstructor
@@ -21,5 +23,5 @@ public class Child {
 	}
 
 	@DBRef(lazy = true)
-	public Address address;
+	public List<Address> address;
 }

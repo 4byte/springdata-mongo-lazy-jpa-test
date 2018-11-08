@@ -16,9 +16,10 @@ public class Person {
 	@Id
 	public String id;
 	public String name;
-	@Field("child_id")
+
 //	@DBRef
 	@DBRef(lazy = true)
+	@Field("child_id")
 	public Child child;
 
 	public Person(String name) {
